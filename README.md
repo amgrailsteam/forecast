@@ -4,6 +4,7 @@ OWM rest client configuration readme
 Please note that the following configuration with default values is already defined in app's application.groovy.
 You are free to change for a desired configuration.
 
+```groovy
 org {
     openWeatherMap {
         forecast {
@@ -29,3 +30,4 @@ org {
         }
     }
 }
+```
