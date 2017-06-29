@@ -1,0 +1,56 @@
+/*
+*= require_tree bootstrap
+*= require_self
+*/
+
+.weatherIcon {
+    border: solid darkgray 1px;
+    border-radius: 10px;
+}
+
+.currentHeader, .currentForecast {
+    font-size: 26px;
+}
+
+.container {
+    width: 1200px;
+}
+
+.current,
+.forecasts, .operations {
+    border: solid darkgray 1px;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.main {
+    margin-right: 10px;
+    width: 20%;
+    position: fixed;
+    float: left;
+}
+
+.forecasts {
+    overflow: auto;
+    position: relative;
+    width: 50%;
+    left: 35%;
+    min-height: 400px;
+}
+
+.operations {
+    margin-bottom: 10px;
+}
+
+.forecastListSeparator {
+    text-align: center;
+    font-size: 16px;
+    max-height: 15px;
+    vertical-align: middle;
+    background-color: rgba(165, 191, 210, 0.68);
+}
+
+.forecastItem {
+    height: 40px;
+    border: solid rgba(165, 191, 210, 0.68) 1px;
+}
