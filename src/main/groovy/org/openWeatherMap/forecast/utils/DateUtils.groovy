@@ -1,4 +1,4 @@
-package org.openWeatherMap.forecast.config
+package org.openWeatherMap.forecast.utils
 
 import org.joda.time.LocalDateTime
 import org.joda.time.format.DateTimeFormat

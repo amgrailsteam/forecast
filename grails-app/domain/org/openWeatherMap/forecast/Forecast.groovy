@@ -3,6 +3,7 @@ package org.openWeatherMap.forecast
 import org.joda.time.LocalDateTime
 
 class Forecast {
+
     LocalDateTime dateTime
     BigDecimal temp
     BigDecimal tempMin

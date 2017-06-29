@@ -1,4 +1,4 @@
-<%@ page import="org.openWeatherMap.forecast.config.DateUtils" %>
+<%@ page import="org.openWeatherMap.forecast.utils.DateUtils" %>
 <!doctype html>
 <html>
 <head>

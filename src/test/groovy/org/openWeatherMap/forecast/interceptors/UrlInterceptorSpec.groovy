@@ -1,6 +1,6 @@
 package org.openWeatherMap.forecast.interceptors
 
-
+import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
@@ -8,6 +8,7 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
 @TestFor(UrlInterceptor)
+@Mock(UrlInterceptor)
 class UrlInterceptorSpec extends Specification {
 
     def setup() {
@@ -17,11 +18,17 @@ class UrlInterceptorSpec extends Specification {
 
     }
 
-    void "Test request interceptor matching"() {
-        when:"A request matches the interceptor"
-            withRequest(controller:"request")
+    void "Url with valid id passes interceptor"() {
+        when:
+        withRequest(controller: "index", action: "show")
+        interceptor.request.addParameter('id', value)
 
-        then:"The interceptor does match"
-            interceptor.doesMatch()
+        then:
+        expected == interceptor.before()
+
+        where:
+        value | expected
+        '123' | true
+        'abc' | false
     }
 }

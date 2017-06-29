@@ -4,6 +4,7 @@ import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import grails.test.mixin.TestMixin
 import grails.test.mixin.web.GroovyPageUnitTestMixin
+import org.openWeatherMap.forecast.interceptors.UrlInterceptor
 import spock.lang.Specification
 
 import static java.util.Objects.equals
@@ -13,7 +14,7 @@ import static java.util.Objects.equals
  */
 @TestMixin(GroovyPageUnitTestMixin)
 @TestFor(IndexController)
-@Mock(City)
+@Mock([City, UrlInterceptor])
 class IndexControllerSpec extends Specification {
     OwmClientService owmClientService
     long testId = 1
@@ -60,4 +61,5 @@ class IndexControllerSpec extends Specification {
         then: "The model and view are rendered correctly"
         response.redirectedUrl == "/index/show/${testId}"
     }
+
 }

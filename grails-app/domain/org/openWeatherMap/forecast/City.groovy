@@ -3,21 +3,23 @@ package org.openWeatherMap.forecast
 import org.joda.time.LocalDateTime
 
 class City {
+
     String name
-    BigDecimal longtitude
+    BigDecimal longitude
     BigDecimal latitude
     String countryCode
     LocalDateTime lastUpdate
     List<Forecast> forecasts
 
     static constraints = {
-        countryCode size: 2..2
+        countryCode minSize: 2, maxSize: 2
         name maxSize: 255
     }
 
     static mapping = {
         version false
         id generator: 'assigned'
+        forecasts cascade: "all-delete-orphan"
     }
 
     static hasMany = [forecasts: Forecast]

@@ -13,6 +13,11 @@ class OwmClientService {
     private static final Logger LOGGER = LoggerFactory.getLogger(OwmClientService.class)
     OwmParserService owmParserService
 
+    /**
+     * Method for requesting forecast data for the city from OWM
+     * @param city
+     * @return response from OWM parsed to JSON
+     */
     JSONElement getDataFromOwm(City city) {
         URL owmRestUrl = new URIBuilder(getConfigValue(OWM_REQUEST_URI)).
                 addParameter("appid", getConfigValue(OWM_REQUEST_KEY)).
@@ -20,7 +25,11 @@ class OwmClientService {
         JSON.parse(owmRestUrl.getText())
     }
 
-    def updateForecast(City city) {
+    /**
+     * Method for updating forecast data for the city based on json from OWM
+     * @param city
+     */
+    void updateForecast(City city) {
         JSONElement responseFromOwm = getDataFromOwm(city)
         if (responseFromOwm?.getAt('cod') != SC_OK.toString()) {
             LOGGER.error("Unsuccessful request to OWM for city: ${city.id}")
@@ -28,7 +37,7 @@ class OwmClientService {
         }
 
         owmParserService.updateCityFromJson(city, responseFromOwm)
-        if (!city.save(flush: true)) {
+        if (!city.merge(flush: true)) {
             LOGGER.error("Unable to flush updated forecast data for city: ${city.id}")
         }
         LOGGER.debug("Updated forecast for city: ${city.id}")

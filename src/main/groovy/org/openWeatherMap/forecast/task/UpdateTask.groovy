@@ -6,6 +6,11 @@ import static grails.util.Holders.applicationContext
 
 class UpdateTask implements Task {
 
+    /**
+     * Task updates the forecast data for each item in City domain.
+     * Is used by the scheduler for automatic updates
+     */
+
     @Override
     void executeTask() {
         City.withNewSession {

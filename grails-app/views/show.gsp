@@ -37,13 +37,13 @@
             <div class="tab-content">
                 <div id="today" class="tab-pane fade in active">
                     <g:render template="/templates/forecastList" model="[forecastList: city.forecasts.findAll {
-                        it.dateTime.toLocalDate().equals(org.joda.time.LocalDate.now())
+                        it.dateTime.toLocalDate().equals(LocalDate.now())
                     }]"/>
                 </div>
 
                 <div id="tomorrow" class="tab-pane fade">
                     <g:render template="/templates/forecastList" model="[forecastList: city.forecasts.findAll {
-                        it.dateTime.toLocalDate().equals(org.joda.time.LocalDate.now().plusDays(1))
+                        it.dateTime.toLocalDate().equals(LocalDate.now().plusDays(1))
                     }]"/>
                 </div>
 

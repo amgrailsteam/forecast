@@ -51,7 +51,7 @@
             <g:message code="forecast.geoLocation.label"/>
         </td>
         <td>
-            [${city.longtitude}, ${city.latitude}]
+            [${city.longitude}, ${city.latitude}]
         </td>
     </tr>
 </table>
